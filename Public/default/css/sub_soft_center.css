@@ -1,0 +1,30 @@
+#subSoft{
+	color: #fff;
+	padding:9.3% 8.6%;
+	background: url(../images/core_bg.png) no-repeat center center;
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
+#subSoft .header_txt{
+	font-size: 32px;
+	margin-bottom: 9.3%;
+}
+.content-pic{
+	width: 53.5%;
+	margin-right: 7%;
+	box-shadow: 10px 10px 15px rgba(0,0,0,.4);
+}
+.content-pic img{
+	width: 100%;
+}
+.content-txt{
+	width: 38%;
+	background: #000;
+	padding: 5% 4.7% 6.4%;
+	box-shadow: 10px 10px 15px rgba(0,0,0,.4);
+}
+.content-txt p{
+	text-indent: 2em;
+	margin-bottom: 0;
+	line-height: 48px;
+}

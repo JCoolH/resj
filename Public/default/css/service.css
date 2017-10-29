@@ -1,0 +1,37 @@
+#serContainer{
+	min-width: 1300px;
+	max-width: 1920px;
+	padding-top: 6.7%;
+	padding-bottom: 5%;
+	background: url(../images/core_bg.png) no-repeat center center;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+#serviceBox{
+	width: 88.8%;
+	margin-left: 5.5%;
+	margin-bottom: 0;
+}
+#serviceBox li{
+	width: 20%;
+	position: relative;
+}
+#serviceBox li > img{
+	width: 100%;
+}
+.service_mask{
+	color: #fff;
+	padding: 30px 40px;
+	line-height: 28px;
+	background-color: #000;
+	display: none;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+.service_mask .mask-tit{
+	background: url(../images/ser_tit.png) no-repeat center center;
+	padding:20px; 
+	color: rgb(33,33,33);
+	margin-bottom: 30px;
+}

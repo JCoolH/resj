@@ -1,0 +1,30 @@
+.introduce-virtue{
+	margin-bottom: 0;
+}
+.introduce-virtue > li{
+	background-color: #000;
+	width: 580px;
+	height: 350px;
+	padding: 0;
+	overflow: hidden;
+	margin-bottom: 25px;
+	margin-left: 12px;
+	margin-right: 12px;
+}
+.introduce-virtue > li p{
+	padding-left: 50px;
+	padding-right: 50px;
+	text-align: left;
+}
+.introduce-virtue > li h4{
+	margin-top: 20px;
+	font-size: 16px;
+	margin-bottom: 35px;
+}
+.introduce-virtue img{
+	width:100%;
+	height: 100%;
+}
+.text-spec-info{
+	line-height: 24px;
+}

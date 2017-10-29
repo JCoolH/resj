@@ -1,0 +1,37 @@
+.soft-pic{
+	width: 22.7%;
+	display: inline-block;
+}
+.soft-descript{
+	margin-left: 8.5%;
+}
+.soft-text-box{
+	display: inline-block;
+	margin-left: 64px;
+	background: #000;
+	padding: 2% 3.6%;
+	width: 57.2%;
+	text-align: left;
+}
+.soft-text-box h4{
+	font-size: 20px;
+}
+.soft-text-box h5{
+	font-size: 18px;
+}
+.spec-soft-info{
+	border-bottom: 1px dashed #fff;
+	padding-top: 3%;
+}
+.learn-more{
+	width: 120px;
+	height: 26px;
+	color: #d98c5e;
+	background: #1c1c1c;
+	text-align: center;
+	display: inline-block;
+	margin-bottom: 30px;
+}
+.learn-more:hover{
+	color: #d98c5e;
+}

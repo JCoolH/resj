@@ -1,0 +1,60 @@
+#furContainer{
+	width: 100%;
+	background: url(../images/core_bg.png) no-repeat center center;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+#furContainer .swiper-container{
+	padding-right: 0.74%;
+	padding-left: 0.37%;
+	padding-top: 3%;
+}
+#furContainer .swiper-slide a{
+	display: block;
+	float: left;
+	width:32.333%;
+	margin-left: 0.37%; 
+	margin-bottom: 1.5%;
+	position: relative;
+	color:#fff;
+}
+#furContainer .swiper-slide a img{
+	width: 100%;
+}
+.fur_mask{
+	position: absolute;
+	width: 100%;
+	background-color: rgba(33,33,33,.8);
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+	transition:.5s;
+}
+.fur_mask_txt{
+	position: absolute;
+	width: 50%;
+	border: 2px solid #f3f3f3;
+	opacity: 0;
+	transition: .5s;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	top:50%;
+	left: 25%;
+	font-size: 36px;
+}
+#furContainer .swiper-slide a:hover .fur_mask_txt,#furContainer .swiper-slide a:hover .fur_mask{
+	opacity: 1;
+}
+.swiper-pagination-bullet{
+	width: 28px;
+	height: 28px;
+	background-color: #716d6d;
+	opacity: 1;
+}
+.swiper-pagination-bullet-active{
+	background-color: #462510;
+}
+.swiper-pagination{
+	position: static;
+	margin:20px 0 40px;
+}

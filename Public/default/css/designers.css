@@ -1,0 +1,38 @@
+#desBox{
+	width: 80%;
+	margin-left: 10%;
+	margin-bottom: 0;
+}
+#desBox li{
+	width: 25%;
+	position: relative;
+}
+.des-details{
+	width: 100%;
+	display: inline-block;
+}
+.des-details > img{
+	width: 100%;
+}
+.des_mask{
+	color:transparent;
+	height: 0;
+	background-color: rgba(217,140,94,.64);
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	transition:.5s;
+}
+#desBox li:hover .des_mask{
+	height: 64px;
+	line-height: 64px;
+	color: #fff;
+}
+.grey-mask{
+	width: 100%;
+	background: rgba(0,0,0,.5);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
