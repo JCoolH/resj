@@ -7,6 +7,28 @@ $('#carousel-example-generic').on({
 		$("#carousel-example-generic").carousel('cycle');
 	}
 })
+//banner图添加
+$.post('http://127.0.0.1:81/index.php?g=Home&m=Abc&a=list_banner',{aid:1,limit:3},function(datas){
+	console.log(JSON.parse(datas));
+	var obj = JSON.parse(datas);
+	if(obj.state==1){
+		var pic = '',
+			slider = '';
+		for(var i=0;i<obj.data.length;i++){
+			console.log(obj.data[i].content)
+			pic += '<div class="item">'+
+				      '<a href="#"><img src="'+obj.data[i].content+'"></a>'+
+				    '</div>';
+			slider += '<li data-target="#carousel-example-generic" data-slide-to="'+i+'"></li>';
+		}
+		$('.carousel-inner').html(pic);
+		$('.carousel-indicators').html(slider);
+		$('.carousel-inner > .item').eq(0).addClass('active');
+		$('.carousel-indicators > li').eq(0).addClass('active');
+	}else{
+		alert(obj.msg)
+	}
+})
 //页面内容动效
 new WOW().init();
 //加数字动态
