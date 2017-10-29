@@ -17,14 +17,13 @@ class AbcAction extends Action{
 
 	    $id = I('aid',0,'intval');
 	    $limit = I('limit',0,'intval');
-$id = 1;
-$limit = 2;
+
 	    $where = array('aid'=>$id,'status'=>1);
 	    if(!empty($id) &&!empty($limit))
         {
             $_abc = M('abcDetail')->where($where)->order('sort')->limit($limit)->select();
             //var_dump($_abc);exit;\
-            msg('0','参数错误',$_abc);
+
         }else{
 	        msg('0','参数错误','');
         }
