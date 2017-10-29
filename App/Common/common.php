@@ -1,6 +1,17 @@
 <?php
 /******公共函数文件*******/
 
+//api
+function msg($sta,$str,$data){
+    $arr = array();
+    $arr['state'] = $sta;
+    $arr['msg'] = $str;
+    $arr['data'] = $data;
+    return json_encode($arr);
+}
+
+
+
 //magic_quotes_gpc如果开启,去掉转义，不然加上TP入库时的转义，会出现两次反斜线转义
 if (get_magic_quotes_gpc()) {
     function stripslashes_deep($value) { 

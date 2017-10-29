@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a33f44c4-4ee3-4d5b-818e-779e1494de8d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Common/common.php" afterPath="$PROJECT_DIR$/App/Common/common.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Group/Home/Action/AbcAction.class.php" afterPath="$PROJECT_DIR$/App/Group/Home/Action/AbcAction.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Runtime/Logs/17_10_29.log" afterPath="$PROJECT_DIR$/App/Runtime/Logs/17_10_29.log" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,11 +49,48 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="AbcAction.class.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/App/Group/Home/Action/AbcAction.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="26" column="33" lean-forward="true" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/Common/common.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+              <folding>
+                <element signature="e#249#709#0#PHP" expanded="false" />
+                <element signature="n#p#0;n#!!top" expanded="false" />
+                <element signature="n#delCacheHtml#0;n#!!top" expanded="false" />
+                <element signature="e#1866#2012#0#PHP" expanded="false" />
+                <element signature="n#getCategory#0;n#!!top" expanded="false" />
+                <element signature="n#getUrl#0;n#!!top" expanded="false" />
+                <element signature="n#getContentUrl#0;n#!!top" expanded="false" />
+                <element signature="n#getPosition#0;n#!!top" expanded="false" />
+                <element signature="n#getAbc#0;n#!!top" expanded="false" />
+                <element signature="n#getDateList#0;n#!!top" expanded="false" />
+                <element signature="n#getJsOfCity#0;n#!!top" expanded="false" />
+                <element signature="n#getFileFolderList#0;n#!!top" expanded="false" />
+                <marker date="1509261183951" expanded="true" signature="26599:27100" ph="..." />
+                <marker date="1509261183951" expanded="true" signature="26605:27044" ph="..." />
+                <marker date="1509261183951" expanded="true" signature="26855:27036" ph="..." />
+                <marker date="1509261183951" expanded="true" signature="27051:27092" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="TagLibZhtx.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Group/Home/TagLib/TagLibZhtx.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="1228" column="35" lean-forward="false" selection-start-line="1228" selection-start-column="23" selection-end-line="1228" selection-end-column="35" />
+            <state relative-caret-position="611">
+              <caret line="1244" column="89" lean-forward="true" selection-start-line="1244" selection-start-column="9" selection-end-line="1244" selection-end-column="89" />
               <folding>
                 <element signature="e#72#4214#0#PHP" expanded="false" />
                 <element signature="n#_artlist#0;n#TagLibzhtx#0;n#!!top" expanded="false" />
@@ -69,21 +107,6 @@
                 <element signature="n#_flink#0;n#TagLibzhtx#0;n#!!top" expanded="false" />
                 <element signature="n#_gbooklist#0;n#TagLibzhtx#0;n#!!top" expanded="false" />
                 <element signature="n#_reviewlist#0;n#TagLibzhtx#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="common.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Common/common.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="342" column="34" lean-forward="false" selection-start-line="342" selection-start-column="29" selection-end-line="342" selection-end-column="34" />
-              <folding>
-                <marker date="1509188121013" expanded="true" signature="26431:26932" ph="..." />
-                <marker date="1509188121013" expanded="true" signature="26437:26876" ph="..." />
-                <marker date="1509188121013" expanded="true" signature="26687:26868" ph="..." />
-                <marker date="1509188121013" expanded="true" signature="26883:26924" ph="..." />
               </folding>
             </state>
           </provider>
@@ -109,7 +132,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.db.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.db.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Conf/config.db.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="140">
@@ -136,6 +159,8 @@
         <option value="D:/rwsj/rwsj/index.html" />
         <option value="$PROJECT_DIR$/App/Group/Home/Tpl/default/Index_index.html" />
         <option value="$PROJECT_DIR$/App/Group/Home/Action/Interface.class.php" />
+        <option value="$PROJECT_DIR$/App/Common/common.php" />
+        <option value="$PROJECT_DIR$/App/Group/Home/Action/AbcAction.class.php" />
       </list>
     </option>
   </component>
@@ -234,14 +259,6 @@
               <option name="myItemId" value="Home" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tpl" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="default" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -265,29 +282,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Tpl" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WWW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WWW" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="App" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Group" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Home" />
+              <option name="myItemId" value="Action" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -396,17 +391,18 @@
       <workItem from="1509085624980" duration="7132000" />
       <workItem from="1509155021160" duration="1229000" />
       <workItem from="1509240339715" duration="1900000" />
-      <workItem from="1509245699868" duration="3694000" />
+      <workItem from="1509245699868" duration="5809000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18530000" />
+    <option name="totallyTimeSpent" value="20645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19062833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19062833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -432,31 +428,18 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/App/Common/common.php</url>
+          <line>530</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/App/Common/common.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10080">
-          <caret line="504" column="41" lean-forward="false" selection-start-line="504" selection-start-column="33" selection-end-line="504" selection-end-column="41" />
-          <folding>
-            <marker date="1509188121013" expanded="true" signature="26431:26932" ph="..." />
-            <marker date="1509188121013" expanded="true" signature="26437:26876" ph="..." />
-            <marker date="1509188121013" expanded="true" signature="26687:26868" ph="..." />
-            <marker date="1509188121013" expanded="true" signature="26883:26924" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/Group/Manage/Tpl/Model_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1180">
-          <caret line="59" column="36" lean-forward="false" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Group/Manage/Conf/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -518,10 +501,22 @@
         <state relative-caret-position="10080">
           <caret line="504" column="41" lean-forward="false" selection-start-line="504" selection-start-column="33" selection-end-line="504" selection-end-column="41" />
           <folding>
-            <marker date="1509188121013" expanded="true" signature="26431:26932" ph="..." />
-            <marker date="1509188121013" expanded="true" signature="26437:26876" ph="..." />
-            <marker date="1509188121013" expanded="true" signature="26687:26868" ph="..." />
-            <marker date="1509188121013" expanded="true" signature="26883:26924" ph="..." />
+            <element signature="e#249#709#0#PHP" expanded="false" />
+            <element signature="n#p#0;n#!!top" expanded="false" />
+            <element signature="n#delCacheHtml#0;n#!!top" expanded="false" />
+            <element signature="e#1866#2012#0#PHP" expanded="false" />
+            <element signature="n#getCategory#0;n#!!top" expanded="false" />
+            <element signature="n#getUrl#0;n#!!top" expanded="false" />
+            <element signature="n#getContentUrl#0;n#!!top" expanded="false" />
+            <element signature="n#getPosition#0;n#!!top" expanded="false" />
+            <element signature="n#getAbc#0;n#!!top" expanded="false" />
+            <element signature="n#getDateList#0;n#!!top" expanded="false" />
+            <element signature="n#getJsOfCity#0;n#!!top" expanded="false" />
+            <element signature="n#getFileFolderList#0;n#!!top" expanded="false" />
+            <marker date="1509261183951" expanded="true" signature="26599:27100" ph="..." />
+            <marker date="1509261183951" expanded="true" signature="26605:27044" ph="..." />
+            <marker date="1509261183951" expanded="true" signature="26855:27036" ph="..." />
+            <marker date="1509261183951" expanded="true" signature="27051:27092" ph="..." />
           </folding>
         </state>
       </provider>
@@ -556,10 +551,22 @@
         <state relative-caret-position="9740">
           <caret line="487" column="9" lean-forward="false" selection-start-line="487" selection-start-column="9" selection-end-line="487" selection-end-column="9" />
           <folding>
-            <marker date="1509188121013" expanded="true" signature="26431:26932" ph="..." />
-            <marker date="1509188121013" expanded="true" signature="26437:26876" ph="..." />
-            <marker date="1509188121013" expanded="true" signature="26687:26868" ph="..." />
-            <marker date="1509188121013" expanded="true" signature="26883:26924" ph="..." />
+            <element signature="e#249#709#0#PHP" expanded="false" />
+            <element signature="n#p#0;n#!!top" expanded="false" />
+            <element signature="n#delCacheHtml#0;n#!!top" expanded="false" />
+            <element signature="e#1866#2012#0#PHP" expanded="false" />
+            <element signature="n#getCategory#0;n#!!top" expanded="false" />
+            <element signature="n#getUrl#0;n#!!top" expanded="false" />
+            <element signature="n#getContentUrl#0;n#!!top" expanded="false" />
+            <element signature="n#getPosition#0;n#!!top" expanded="false" />
+            <element signature="n#getAbc#0;n#!!top" expanded="false" />
+            <element signature="n#getDateList#0;n#!!top" expanded="false" />
+            <element signature="n#getJsOfCity#0;n#!!top" expanded="false" />
+            <element signature="n#getFileFolderList#0;n#!!top" expanded="false" />
+            <marker date="1509261183951" expanded="true" signature="26599:27100" ph="..." />
+            <marker date="1509261183951" expanded="true" signature="26605:27044" ph="..." />
+            <marker date="1509261183951" expanded="true" signature="26855:27036" ph="..." />
+            <marker date="1509261183951" expanded="true" signature="27051:27092" ph="..." />
           </folding>
         </state>
       </provider>
@@ -761,7 +768,7 @@
         <state relative-caret-position="220">
           <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
           <folding>
-            <element signature="e#6#95#0#PHP" expanded="true" />
+            <element signature="e#6#95#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -771,19 +778,6 @@
         <state relative-caret-position="540">
           <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="19" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/common.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="342" column="34" lean-forward="false" selection-start-line="342" selection-start-column="29" selection-end-line="342" selection-end-column="34" />
-          <folding>
-            <marker date="1509188121013" expanded="true" signature="26431:26932" ph="..." />
-            <marker date="1509188121013" expanded="true" signature="26437:26876" ph="..." />
-            <marker date="1509188121013" expanded="true" signature="26687:26868" ph="..." />
-            <marker date="1509188121013" expanded="true" signature="26883:26924" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -803,18 +797,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Group/Home/Action/AbcAction.class.php">
+    <entry file="file://$PROJECT_DIR$/App/Conf/config.db.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="15" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="15" />
+        <state relative-caret-position="140">
+          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/mongodb/mongodb.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="970" column="17" lean-forward="false" selection-start-line="970" selection-start-column="17" selection-end-line="970" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Common/common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="420" column="9" lean-forward="false" selection-start-line="420" selection-start-column="9" selection-end-line="420" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App/Group/Home/TagLib/TagLibZhtx.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="1228" column="35" lean-forward="false" selection-start-line="1228" selection-start-column="23" selection-end-line="1228" selection-end-column="35" />
+        <state relative-caret-position="611">
+          <caret line="1244" column="89" lean-forward="true" selection-start-line="1244" selection-start-column="9" selection-end-line="1244" selection-end-column="89" />
           <folding>
             <element signature="e#72#4214#0#PHP" expanded="false" />
             <element signature="n#_artlist#0;n#TagLibzhtx#0;n#!!top" expanded="false" />
@@ -835,10 +845,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Conf/config.db.php">
+    <entry file="file://$PROJECT_DIR$/App/Common/common.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        <state relative-caret-position="180">
+          <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding>
+            <element signature="e#249#709#0#PHP" expanded="false" />
+            <element signature="n#p#0;n#!!top" expanded="false" />
+            <element signature="n#delCacheHtml#0;n#!!top" expanded="false" />
+            <element signature="e#1866#2012#0#PHP" expanded="false" />
+            <element signature="n#getCategory#0;n#!!top" expanded="false" />
+            <element signature="n#getUrl#0;n#!!top" expanded="false" />
+            <element signature="n#getContentUrl#0;n#!!top" expanded="false" />
+            <element signature="n#getPosition#0;n#!!top" expanded="false" />
+            <element signature="n#getAbc#0;n#!!top" expanded="false" />
+            <element signature="n#getDateList#0;n#!!top" expanded="false" />
+            <element signature="n#getJsOfCity#0;n#!!top" expanded="false" />
+            <element signature="n#getFileFolderList#0;n#!!top" expanded="false" />
+            <marker date="1509261183951" expanded="true" signature="26599:27100" ph="..." />
+            <marker date="1509261183951" expanded="true" signature="26605:27044" ph="..." />
+            <marker date="1509261183951" expanded="true" signature="26855:27036" ph="..." />
+            <marker date="1509261183951" expanded="true" signature="27051:27092" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Group/Home/Action/AbcAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="33" lean-forward="true" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
           <folding />
         </state>
       </provider>
