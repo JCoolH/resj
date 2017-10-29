@@ -24,7 +24,7 @@ $limit = 2;
         {
             $_abc = M('abcDetail')->where($where)->order('sort')->limit($limit)->select();
             //var_dump($_abc);exit;\
-            msg('0','参数错误',$_abc) ;
+            msg('0','参数错误',$_abc);
         }else{
 	        msg('0','参数错误','');
         }
