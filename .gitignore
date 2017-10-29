@@ -1,2 +1,4 @@
-.idea/
-Runtime/
+.idea/*
+/App/Runtime/*
+*.log
+*.zip

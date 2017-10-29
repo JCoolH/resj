@@ -2,40 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a33f44c4-4ee3-4d5b-818e-779e1494de8d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/App/Runtime/Logs/1509264417-17_10_29.log" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Manage/33e8b3893d103169ef3a2e655100bd01.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Manage/3a10a55dea6eac043c46bde15c02f1fa.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Manage/49052320a167c37e5d100e5dab07a42b.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Manage/71f9de3194237e3a073c1e69917b511b.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Manage/89dd9df3373db86c2a8e267f427941c0.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Manage/8fa72672f348c5fc5599bcce27f9d501.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Manage/969afa6d4f683fd968bf94a8f103f192.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Manage/b681476e58f92a6a973bcdc6c8f143d3.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Manage/b92a61b8843631b434c0d09f726fb315.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Manage/c96d0b2f7f4c510aae773843a1782694.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Manage/dfd87e902aec87b1a1fead8ce013a15e.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Manage/e3a85d8f4c125ab4382275840ae8a267.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Manage/e69e142c25a4a729769426de0a6cee59.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Data/fCategery_0.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Logs/1508990072-17_10_26.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Logs/1509007858-17_10_26.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Logs/1509008109-17_10_26.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Logs/1509008404-17_10_26.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Logs/1509011212-17_10_26.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Logs/1509012411-17_10_26.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Logs/1509013378-17_10_26.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Logs/1509085572-17_10_27.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Logs/1509094544-17_10_27.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Logs/17_10_26.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Logs/17_10_27.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/App/Runtime/Logs/17_10_28.log" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uploads/abc1/20171029/59f548c44e9d0.png" afterPath="$PROJECT_DIR$/uploads/abc1/20171029/59f548c44e9d0.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uploads/abc1/20171029/59f548d196e10.png" afterPath="$PROJECT_DIR$/uploads/abc1/20171029/59f548d196e10.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Group/Home/Action/AbcAction.class.php" afterPath="$PROJECT_DIR$/App/Group/Home/Action/AbcAction.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Group/Home/Tpl/default/Index_index.html" afterPath="$PROJECT_DIR$/App/Group/Home/Tpl/default/Index_index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Runtime/Cache/Home/49060cdca3689efe080df25be1215c45.php" afterPath="$PROJECT_DIR$/App/Runtime/Cache/Home/49060cdca3689efe080df25be1215c45.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Runtime/Logs/17_10_29.log" afterPath="$PROJECT_DIR$/App/Runtime/Logs/17_10_29.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Public/default/js/index.js" afterPath="$PROJECT_DIR$/Public/default/js/index.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -308,7 +276,7 @@
         <entry file="file://$PROJECT_DIR$/App/Group/Home/Action/AbcAction.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="500">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <caret line="25" column="11" lean-forward="true" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -712,12 +680,12 @@
       <workItem from="1509085624980" duration="7132000" />
       <workItem from="1509155021160" duration="1229000" />
       <workItem from="1509240339715" duration="1900000" />
-      <workItem from="1509245699868" duration="9519000" />
+      <workItem from="1509245699868" duration="9833000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24355000" />
+    <option name="totallyTimeSpent" value="24669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="0" />
@@ -1418,7 +1386,7 @@
     <entry file="file://$PROJECT_DIR$/App/Group/Home/Action/AbcAction.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <caret line="25" column="11" lean-forward="true" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
           <folding />
         </state>
       </provider>

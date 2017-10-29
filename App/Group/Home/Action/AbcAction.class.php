@@ -23,7 +23,6 @@ class AbcAction extends Action{
         {
             $_abc = M('abcDetail')->where($where)->order('sort')->limit($limit)->select();
             //var_dump($_abc);exit;\
-
            
            echo msg('1','成功',$_abc) ;
         }else{
