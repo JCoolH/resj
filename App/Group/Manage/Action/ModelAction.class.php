@@ -9,13 +9,17 @@ class ModelAction extends CommonAction {
 		$this->display();
 	}
 
-	public function add() {	
+	public function add() {
+
 		if (IS_POST) {
+
 			$this->addPost();
 			exit();
-		}	
+		}
 		$this->styleListList = getFileFolderList(APP_PATH . C('APP_GROUP_PATH') . '/Home/Tpl/' .C('cfg_themestyle') , 2, 'List_*');
+
 		$this->styleShowList = getFileFolderList(APP_PATH . C('APP_GROUP_PATH') . '/Home/Tpl/' .C('cfg_themestyle') , 2, 'Show_*');
+
 		$this->display();
 	}
 

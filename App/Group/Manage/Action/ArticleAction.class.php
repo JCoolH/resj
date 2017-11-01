@@ -45,6 +45,36 @@ class ArticleAction extends CommonContentAction {
 
 		$this->display();
 	}
+    public function indexneirong() {
+
+        $pid = I('pid', 0, 'intval');//类别ID
+        $keyword = I('keyword', '', 'htmlspecialchars,trim');//关键字
+        $fid = I('fid');
+        $this->fid=$fid;
+        //所有子栏目列表
+        import('Class.Category', APP_PATH);
+        $where = array('fid'=>$fid);
+        //分页
+        import('Class.Page', APP_PATH);
+        $count = D('neirong')->where($where)->count();
+        $page = new Page($count, 10);
+        $page->rollPage = 7;
+        $page->setConfig('theme','%totalRow% %header%  %first% %upPage% %linkPage% %downPage% %end% %nowPage%/%totalPage% 页');
+        $limit = $page->firstRow. ',' .$page->listRows;
+        $art = D('neirong')->where($where)->order('id DESC,ordernum')->limit($limit)->select();
+        $fname = D('article')->field('title')->where(array('id'=>$fid))->select();
+        $this->fid = $fid;
+        $this->keyword = $keyword;
+        $this->page = $page->show();
+        $this->catname = $fname['0']['title'];
+        $this->vlist = $art;
+//		p($cate);
+//		die();
+        $this->type = '内容列表';
+
+        $this->display();
+    }
+
 	//添加文章
 	public function add() {
 
@@ -64,10 +94,47 @@ class ArticleAction extends CommonContentAction {
 		import('Class.Category', APP_PATH);
 		$cate = Category::toLevel($cate);
 		$this->flagtypelist = getArrayOfItem('flagtype');//文档属性
+		$this->fenggelist = getArrayOfItem('fengge');//别墅风格
+		$this->kongjianlist = getArrayOfItem('kongjian');//别墅空间
+		$this->loupanlist = getArrayOfItem('loupan');//楼盘
+		$this->shejishi = list_sjs();//设计师
 		$this->cate = get_category_access(Category::getLevelOfModel($cate, $actionName),'add');
 		$this->display();
 	}
+    public function addanli() {
 
+
+        //当前控制器名称
+        $actionName = strtolower($this->getActionName());
+        $this->pid = I('pid', 0, 'intval');
+
+        if (IS_POST) {
+            $this->addPostanli();
+            exit();
+        }
+
+
+        //'type' => 0
+        $cate = getCategory(2);
+        import('Class.Category', APP_PATH);
+        $cate = Category::toLevel($cate);
+        $this->flagtypelist = getArrayOfItem('flagtype');//文档属性
+        $this->fenggelist = getArrayOfItems('fengge');//别墅风格
+        $this->kongjianlist = getArrayOfItems('kongjian');//别墅空间
+        $this->loupanlist = getArrayOfItems('loupan');//楼盘
+        $this->shejishi = list_sjs();//设计师
+        $this->cate = get_category_access(Category::getLevelOfModel($cate, $actionName),'add');
+        $this->display();
+    }
+    public function addneirong(){
+        //当前控制器名称
+        $this->fid = I('fid', 0, 'intval');
+        if (IS_POST) {
+            $this->addPostneirong();
+            exit();
+        }
+        $this->display();
+    }
 	//
 	public function addPost() {
 
@@ -78,7 +145,6 @@ class ArticleAction extends CommonContentAction {
 		$jumpurl = I('jumpurl', '');
 		$description = I('description', '', 'htmlspecialchars');
 		$content = I('content', '', '');
-		
 
 		$pic = I('litpic', '', 'htmlspecialchars,trim');
 
@@ -220,6 +286,303 @@ class ArticleAction extends CommonContentAction {
 			$this->error('添加文章失败');
 		}
 	}
+    public function addPostanli() {
+//var_dump(I('color'));exit;
+        $pid = I('pid', 0, 'intval');
+        $cid = I('cid', 0, 'intval');
+        $title = I('title', '', 'htmlspecialchars,rtrim');
+        $flags = I('flags', array(),'intval');
+        $jumpurl = I('jumpurl', '');
+        $description = I('description', '', 'htmlspecialchars');
+        $content = I('content', '', '');
+
+
+        $pic = I('litpic', '', 'htmlspecialchars,trim');
+
+        if (empty($title)) {
+            $this->error('标题不能为空');
+        }
+        if (!$cid) {
+            $this->error('请选择栏目');
+        }
+        $pid = $cid;//转到自己的栏目
+        if (empty($description)) {
+            $description = str2sub(strip_tags($content), 120);
+        }
+
+        //图片标志
+        if (!empty($pic) && !in_array(B_PIC, $flags)) {
+            $flags[] = B_PIC;
+        }
+        $flag = 0;
+        foreach ($flags as $v) {
+            $flag += $v;
+        }
+
+        //获取属于分类信息,得到modelid
+        import('Class.Category', APP_PATH);
+        $selfCate = Category::getSelf(getCategory(0), $cid);//当前栏目信息
+        $modelid = $selfCate['modelid'];
+
+        $data =array(
+            'title' => $title ,
+            'shorttitle' => I('shorttitle', '', 'htmlspecialchars,trim'),
+            'ext' => I('ext', '', 'htmlspecialchars,trim'),
+            'color' => I('color'),
+            'cid'	=> $cid,
+            'ordernum'=>I('ordernum'),
+            'litpic'	=> $pic,
+            'keywords' => I('keywords','','htmlspecialchars,trim'),
+            'description' => $description,
+            'author' => I('author', ''),
+            'copyfrom' => I('copyfrom', ''),
+            'content' => $content,
+            'publishtime' => I('publishtime', time(),'strtotime'),
+            'updatetime' => time(),
+            'click' => rand(10,95),
+            'status' => 0,
+            'commentflag' => I('commentflag', 0,'intval'),
+            'flag'	=> $flag,
+            'jumpurl' => $jumpurl,
+            'aid'	=> $_SESSION[C('USER_AUTH_KEY')],
+            'projects' => I('projects','','htmlspecialchars,trim'),
+            'brand' => I('brand','','htmlspecialchars,trim'),
+            'shejishi' => I('shejishi','','intval'),
+            'kongjian' => I('kongjian','','intval'),
+            'loupan' => I('loupan','','intval'),
+            'fengge' => I('fengge','','intval'),
+            'price' => I('price', ''),
+            'mianji' => I('mianji', ''),
+
+        );
+
+
+        if($id = M('article')->add($data)) {
+
+            //内容中的图片
+            $img_arr = array();
+            $pic_first = array();
+            $reg = "/<img[^>]*src=\"((.+)\/(.+)\.(jpg|gif|bmp|png))\"/isU";
+            preg_match_all($reg, $data['content'], $img_arr, PREG_PATTERN_ORDER);
+            // 匹配出来的不重复图片
+            $img_arr = array_unique($img_arr[1]);
+            $attid_arr = array();
+
+            if (!empty($img_arr)) {
+
+                if(!empty($_SERVER['HTTP_HOST']))
+                    $baseurl = 'http://'.$_SERVER['HTTP_HOST'];
+                else
+                    $baseurl = rtrim("http://".$_SERVER['SERVER_NAME'],'/');
+                foreach ($img_arr as $k => $v) {
+                    $img_arr[$k] = str_replace($baseurl, '', $v);//清除域名前缀
+                }
+
+                $attid = M('attachment')->field('id,filepath')->where(array('filepath' => array('in', $img_arr)))->select();
+
+                if ($attid) {
+
+                    //只有缩略图为空时,才提取第一张图片
+                    if (empty($pic)) {
+                        //取出本站内的第一张图
+                        foreach ($img_arr as $v) {
+                            foreach ($attid as $v2) {
+                                if ($v == $v2['filepath']) {
+                                    $pic_first = $v2;
+                                    break 2;
+                                }
+                            }
+                        }
+                    }
+                    //attid 数组
+                    foreach ($attid as $v) {
+                        $attid_arr[] = $v['id'];
+                    }
+                }
+
+            }
+
+            //更新上传附件表
+            if (!empty($pic)) {
+
+                $pic = preg_replace('/!(\d+)X(\d+)\.jpg$/i', '', $pic);//清除缩略图的!200X200.jpg后缀
+                $attid = M('attachment')->where(array('filepath' => $pic))->getField('id');
+                if($attid){
+                    $attid_arr[] = $attid;
+                }
+            }else if (!empty($pic_first)) {
+                //更新表字段
+                $imgtbSize = explode(',', C('cfg_imgthumb_size'));//配置缩略图第一个参数
+                $imgTSize = explode('X', $imgtbSize[0]);
+                $updata = array('id' => $id, 'litpic' => get_picture($pic_first['filepath'], $imgTSize[0], $imgTSize[1]));
+                if (!in_array(B_PIC, $flags)) {
+                    $updata['flag'] = array('exp','flag+'.B_PIC);
+                }
+                M('article')->save($updata);
+            }
+
+            //attachmentindex入库
+            if (!empty($attid_arr)) {
+                $attid_arr = array_unique($attid_arr);
+                $dataAtt = array();
+                foreach ($attid_arr as $v) {
+                    $dataAtt[] = array('attid' => $v,'arcid' => $id, 'modelid' => $modelid);
+                }
+                M('attachmentindex')->addAll($dataAtt);
+            }
+
+
+
+            //更新静态缓存
+            delCacheHtml('List/index_'.$cid, false, 'list:index');
+            delCacheHtml('Index_index', false, 'index:index');
+
+            //Delete blog archive
+//			getDateList($modelid, 2);
+
+            $this->success('添加文章成功',U(GROUP_NAME. '/Article/index', array('pid' => $pid)));
+        }else {
+            $this->error('添加文章失败');
+        }
+    }
+    public function addPostneirong() {
+        $fid = I('fid','');
+        $name = I('name','','htmlspecialchars,rtrim');
+        $cid = I('cid', 0, 'intval');
+        $pic = I('litpic', '', 'htmlspecialchars,trim');
+        if (empty($name)) {
+            $this->error('标题不能为空');
+        }
+
+        $pictureurls_arr  = array();
+
+        $imgPostUrls = I('pictureurls', '');
+        if (is_array($imgPostUrls)) {
+            foreach ($imgPostUrls as $k => $v) {
+                $pictureurls_arr[] = $v.'$$$'.'$$$';
+                //缩略图
+                if ($k == 0) {
+                    $imgtbSize = explode(',', C('cfg_imgthumb_size'));//配置缩略图第一个参数
+                    $imgTSize = explode('X', $imgtbSize[0]);
+                    if (!empty($imgTSize)) {
+                        $pic = get_picture($v, $imgTSize[0], $imgTSize[1]);
+                    }else {
+                        $pic = $v;
+                    }
+                }
+            }
+        }
+        $pictureurls = join('|||',$pictureurls_arr);
+        $pic = isset($pic) ? $pic : '';
+        //图片标志
+        if (!empty($pic) && !in_array(B_PIC, $flags)) {
+            $flags[] = B_PIC;
+        }
+
+
+        //获取属于分类信息,得到modelid
+        import('Class.Category', APP_PATH);
+        $selfCate = Category::getSelf(getCategory(0), $cid);//当前栏目信息
+        $modelid = $selfCate['modelid'];
+
+        $data =array(
+            'name' => $name ,
+            'content' => I('content', '', 'htmlspecialchars,trim'),
+            'fid'	=> $fid,
+            'ordernum'=>I('ordernum','0'),
+            'litpic'	=> $pic,
+            'pictureurls' => $pictureurls,
+
+        );
+        if($id = M('neirong')->add($data)) {
+
+            //内容中的图片
+            $img_arr = array();
+            $pic_first = array();
+            $reg = "/<img[^>]*src=\"((.+)\/(.+)\.(jpg|gif|bmp|png))\"/isU";
+            preg_match_all($reg, $data['content'], $img_arr, PREG_PATTERN_ORDER);
+            // 匹配出来的不重复图片
+            $img_arr = array_unique($img_arr[1]);
+            $attid_arr = array();
+
+            if (!empty($img_arr)) {
+
+                if(!empty($_SERVER['HTTP_HOST']))
+                    $baseurl = 'http://'.$_SERVER['HTTP_HOST'];
+                else
+                    $baseurl = rtrim("http://".$_SERVER['SERVER_NAME'],'/');
+                foreach ($img_arr as $k => $v) {
+                    $img_arr[$k] = str_replace($baseurl, '', $v);//清除域名前缀
+                }
+
+                $attid = M('attachment')->field('id,filepath')->where(array('filepath' => array('in', $img_arr)))->select();
+
+                if ($attid) {
+
+                    //只有缩略图为空时,才提取第一张图片
+                    if (empty($pic)) {
+                        //取出本站内的第一张图
+                        foreach ($img_arr as $v) {
+                            foreach ($attid as $v2) {
+                                if ($v == $v2['filepath']) {
+                                    $pic_first = $v2;
+                                    break 2;
+                                }
+                            }
+                        }
+                    }
+                    //attid 数组
+                    foreach ($attid as $v) {
+                        $attid_arr[] = $v['id'];
+                    }
+                }
+
+            }
+
+            //更新上传附件表
+            if (!empty($pic)) {
+
+                $pic = preg_replace('/!(\d+)X(\d+)\.jpg$/i', '', $pic);//清除缩略图的!200X200.jpg后缀
+                $attid = M('attachment')->where(array('filepath' => $pic))->getField('id');
+                if($attid){
+                    $attid_arr[] = $attid;
+                }
+            }else if (!empty($pic_first)) {
+                //更新表字段
+                $imgtbSize = explode(',', C('cfg_imgthumb_size'));//配置缩略图第一个参数
+                $imgTSize = explode('X', $imgtbSize[0]);
+                $updata = array('id' => $id, 'litpic' => get_picture($pic_first['filepath'], $imgTSize[0], $imgTSize[1]));
+                if (!in_array(B_PIC, $flags)) {
+                    $updata['flag'] = array('exp','flag+'.B_PIC);
+                }
+                M('neirong')->save($updata);
+            }
+
+            //attachmentindex入库
+            if (!empty($attid_arr)) {
+                $attid_arr = array_unique($attid_arr);
+                $dataAtt = array();
+                foreach ($attid_arr as $v) {
+                    $dataAtt[] = array('attid' => $v,'arcid' => $id, 'modelid' => $modelid);
+                }
+                M('attachmentindex')->addAll($dataAtt);
+            }
+
+
+
+            //更新静态缓存
+            delCacheHtml('List/index_'.$cid, false, 'list:index');
+            delCacheHtml('Index_index', false, 'index:index');
+
+            //Delete blog archive
+//			getDateList($modelid, 2);
+
+            $this->success('添加内容成功',U(GROUP_NAME. '/Article/indexneirong', array('fid' => $fid)));
+        }else {
+            $this->error('添加内容失败');
+        }
+    }
+
 
 	//编辑文章
 	public function edit() {
@@ -246,7 +609,56 @@ class ArticleAction extends CommonContentAction {
 		$this->flagtypelist = getArrayOfItem('flagtype');//文档属性
 		$this->display();
 	}
+    public function editanli() {
+        //当前控制器名称
+        $id = I('id', 0, 'intval');
+        $actionName = strtolower($this->getActionName());
+        $this->pid = I('pid', 0, 'intval');
 
+        if (IS_POST) {
+            $this->editPostanli();
+            exit();
+        }
+
+        //'type' => 0
+        $cate = getCategory(2);
+        import('Class.Category', APP_PATH);
+        $cate = Category::toLevel($cate);
+        $this->cate = get_category_access(Category::getLevelOfModel($cate, $actionName),'edit');
+
+
+        $vo = M($actionName)->find($id);
+        $vo['content'] = htmlspecialchars($vo['content']);//ueditor
+        $this->vo = $vo;
+        $this->flagtypelist = getArrayOfItem('flagtype');//文档属性
+        $this->fenggelist = getArrayOfItems('fengge');//别墅风格
+        $this->kongjianlist = getArrayOfItems('kongjian');//别墅空间
+        $this->loupanlist = getArrayOfItems('loupan');//楼盘
+        $this->shejishi = list_sjs();//设计师
+        $this->display();
+    }
+    public function editneirong() {
+        //当前控制器名称
+        $id = I('id', 0, 'intval');
+        $this->fid = I('fid', 0, 'intval');
+        $this->id = $id;
+        if (IS_POST) {
+            $this->editPostneirong();
+            exit();
+        }
+        $vo = M('neirong')->find($id);
+        $pictureurls = array();
+        if (!empty($vo['pictureurls'])) {
+            $temparr = explode('|||', $vo['pictureurls']);
+            foreach ($temparr as $key => $v) {
+                $temparr2 = explode('$$$', $v);
+                $pictureurls[] = array('url' => ''.$temparr2[0], 'alt' => ''.$temparr2[1]);
+            }
+        }
+        $vo['pictureurls'] = $pictureurls;
+        $this->vo = $vo;
+        $this->display();
+    }
 
 	//修改文章处理
 	public function editPost() {
@@ -402,6 +814,300 @@ class ArticleAction extends CommonContentAction {
 		}
 		
 	}
+    public function editPostanli() {
+
+        $data =array(
+            'id' => I('id', 0, 'intval'),
+            'title' => I('title', '', 'htmlspecialchars,rtrim'),
+            'shorttitle' => I('shorttitle', '', 'htmlspecialchars,rtrim'),
+            'ext' => I('ext', '', 'htmlspecialchars,rtrim'),
+            'color' => I('color'),
+            'ordernum'=>I('ordernum'),
+            'cid'	=> I('cid', 0, 'intval'),
+            'litpic'	=> I('litpic', ''),
+            'keywords' => I('keywords', '', 'htmlspecialchars,trim'),
+            'description' =>  I('description', ''),
+            'author' => I('author', ''),
+            'copyfrom' => I('copyfrom', ''),
+            'content' => I('content', '', ''),
+            'publishtime' => I('publishtime', time(),'strtotime'),
+            'updatetime' => time(),
+            'commentflag' => I('commentflag', 0,'intval'),
+            'jumpurl' => I('jumpurl', ''),
+            'projects' => I('projects','','htmlspecialchars,trim'),
+            'brand' => I('brand','','htmlspecialchars,trim'),
+            'shejishi' => I('shejishi','','intval'),
+            'kongjian' => I('kongjian','','intval'),
+            'loupan' => I('loupan','','intval'),
+            'fengge' => I('fengge','','intval'),
+            'price' => I('price', ''),
+            'mianji' => I('mianji', ''),
+
+        );
+        $id = $data['id'];
+        $pid = I('pid', 0, 'intval');
+        $flags = I('flags', array(),'intval');
+        $pic = $data['litpic'];
+
+        if (empty($data['title'])) {
+            $this->error('标题不能为空');
+        }
+        if (!$data['cid']) {
+            $this->error('请选择栏目');
+        }
+        $pid = $data['cid'];//转到自己的栏目
+
+        if (empty($data['description'])) {
+            $data['description'] = str2sub(strip_tags($data['content']), 120);
+        }
+
+
+        //图片标志
+        if (!empty($pic) && !in_array(B_PIC, $flags)) {
+            $flags[] = B_PIC;
+        }
+        $data['flag'] = 0;
+        foreach ($flags as $v) {
+            $data['flag'] += $v;
+        }
+
+
+
+
+        //获取属于分类信息,得到modelid
+        import('Class.Category', APP_PATH);
+        $selfCate = Category::getSelf(getCategory(0), $data['cid']);//当前栏目信息
+        $modelid = $selfCate['modelid'];
+
+
+
+        if (false !== M('article')->save($data)) {
+            //del
+            M('attachmentindex')->where(array('arcid' => $id, 'modelid' => $modelid))->delete();
+
+
+            //内容中的图片
+            $img_arr = array();
+            $pic_first = array();
+            $reg = "/<img[^>]*src=\"((.+)\/(.+)\.(jpg|gif|bmp|png))\"/isU";
+            preg_match_all($reg, $data['content'], $img_arr, PREG_PATTERN_ORDER);
+            // 匹配出来的不重复图片
+            $img_arr = array_unique($img_arr[1]);
+            $attid_arr = array();
+
+            if (!empty($img_arr)) {
+
+                if(!empty($_SERVER['HTTP_HOST']))
+                    $baseurl = 'http://'.$_SERVER['HTTP_HOST'];
+                else
+                    $baseurl = rtrim("http://".$_SERVER['SERVER_NAME'],'/');
+                foreach ($img_arr as $k => $v) {
+                    $img_arr[$k] = str_replace($baseurl, '', $v);//清除域名前缀
+                }
+
+                $attid = M('attachment')->field('id,filepath')->where(array('filepath' => array('in', $img_arr)))->select();
+
+                if ($attid) {
+
+                    //只有缩略图为空时,才提取第一张图片
+                    if (empty($pic)) {
+                        //取出本站内的第一张图
+                        foreach ($img_arr as $v) {
+                            foreach ($attid as $v2) {
+                                if ($v == $v2['filepath']) {
+                                    $pic_first = $v2;
+                                    break 2;
+                                }
+                            }
+                        }
+                    }
+                    //attid 数组
+                    foreach ($attid as $v) {
+                        $attid_arr[] = $v['id'];
+                    }
+                }
+
+            }
+
+            //更新上传附件表
+            if (!empty($pic)) {
+
+                $pic = preg_replace('/!(\d+)X(\d+)\.jpg$/i', '', $pic);//清除缩略图的!200X200.jpg后缀
+                $attid = M('attachment')->where(array('filepath' => $pic))->getField('id');
+                if($attid){
+                    $attid_arr[] = $attid;
+                }
+            }else if (!empty($pic_first)) {
+                //更新表字段
+                $imgtbSize = explode(',', C('cfg_imgthumb_size'));//配置缩略图第一个参数
+                $imgTSize = explode('X', $imgtbSize[0]);
+                $updata = array('id' => $id, 'litpic' => get_picture($pic_first['filepath'], $imgTSize[0], $imgTSize[1]));
+                if (!in_array(B_PIC, $flags)) {
+                    $updata['flag'] = array('exp','flag+'.B_PIC);
+                }
+                M('article')->save($updata);
+            }
+
+            //attachmentindex入库
+            if (!empty($attid_arr)) {
+                $attid_arr = array_unique($attid_arr);
+                $dataAtt = array();
+                foreach ($attid_arr as $v) {
+                    $dataAtt[] = array('attid' => $v,'arcid' => $id, 'modelid' => $modelid);
+                }
+                M('attachmentindex')->addAll($dataAtt);
+            }
+
+
+
+            //更新静态缓存
+            delCacheHtml('List/index_'.$data['cid'].'_', false, 'list:index');
+            delCacheHtml('List/index_'.$selfCate['ename'], false, 'list:index');//还有只有名称
+            delCacheHtml('Show/index_*_'. $id, false, 'show:index');//不太精确，会删除其他模块同id文档
+
+            //Delete blog archive
+            getDateList($modelid, 2);
+
+            $this->success('修改成功', U(GROUP_NAME. '/Article/index', array('pid' => $pid)));
+        }else {
+
+            $this->error('修改失败');
+        }
+
+    }
+    public function editPostneirong() {
+
+        $data =array(
+            'fid'=>I('fid'),
+            'id' => I('id', 0, 'intval'),
+            'name' => I('name', '', 'htmlspecialchars,rtrim'),
+            'ordernum'=>I('ordernum'),
+            'litpic'	=> I('litpic', ''),
+            'pictureurls' => I('pictureurls', ''),//I方法BUG,不支持数组,
+
+        );
+        $id = $data['id'];
+        $fid = I('fid', 0, 'intval');
+        $flags = I('flags', array(),'intval');
+        $pic = $data['litpic'];
+        if (empty($data['name'])) {
+            $this->error('标题不能为空');
+        }
+        //获取属于分类信息,得到modelid
+        import('Class.Category', APP_PATH);
+        $selfCate = Category::getSelf(getCategory(0), $data['cid']);//当前栏目信息
+        $modelid = $selfCate['modelid'];
+
+        $pictureurls_arr  = array();
+        $imgPostUrls = $data['pictureurls'];
+        if (is_array($imgPostUrls)) {
+            foreach ($imgPostUrls as $k => $v) {
+                $pictureurls_arr[] = $v.'$$$'.'$$$';//array('url'=> $v ,'alt'=> '');
+                if ($k == 0) {
+                    $imgtbSize = explode(',', C('cfg_imgthumb_size'));//配置缩略图第一个参数
+                    $imgTSize = explode('X', $imgtbSize[0]);
+                    if (!empty($imgTSize)) {
+                        $pic = get_picture($v, $imgTSize[0], $imgTSize[1]);
+                    }else {
+                        $pic = $v;
+                    }
+                }
+            }
+        }
+
+        $data['pictureurls'] = join('|||',$pictureurls_arr);
+        $data['litpic'] = isset($pic) ? $pic : '';
+        //图片标志
+        if (!empty($pic) && !in_array(B_PIC, $flags)) {
+            $flags[] = B_PIC;
+        }
+        $data['flag'] = 0;
+        foreach ($flags as $v) {
+            $data['flag'] += $v;
+        }
+
+        if (false !== M('neirong')->save($data)) {
+            //del
+            M('attachmentindex')->where(array('arcid' => $id, 'modelid' => $modelid))->delete();
+
+
+            //内容中的图片
+            $img_arr = array();
+            $pic_first = array();
+            $reg = "/<img[^>]*src=\"((.+)\/(.+)\.(jpg|gif|bmp|png))\"/isU";
+            preg_match_all($reg, $data['content'], $img_arr, PREG_PATTERN_ORDER);
+            // 匹配出来的不重复图片
+            $img_arr = array_unique($img_arr[1]);
+            $attid_arr = array();
+
+            if (!empty($img_arr)) {
+
+                if(!empty($_SERVER['HTTP_HOST']))
+                    $baseurl = 'http://'.$_SERVER['HTTP_HOST'];
+                else
+                    $baseurl = rtrim("http://".$_SERVER['SERVER_NAME'],'/');
+                foreach ($img_arr as $k => $v) {
+                    $img_arr[$k] = str_replace($baseurl, '', $v);//清除域名前缀
+                }
+                $attid = M('attachment')->field('id,filepath')->where(array('filepath' => array('in', $img_arr)))->select();
+                if ($attid) {
+                    //只有缩略图为空时,才提取第一张图片
+                    if (empty($pic)) {
+                        //取出本站内的第一张图
+                        foreach ($img_arr as $v) {
+                            foreach ($attid as $v2) {
+                                if ($v == $v2['filepath']) {
+                                    $pic_first = $v2;
+                                    break 2;
+                                }
+                            }
+                        }
+                    }
+                    //attid 数组
+                    foreach ($attid as $v) {
+                        $attid_arr[] = $v['id'];
+                    }
+                }
+
+            }
+            //更新上传附件表
+            if (!empty($pic)) {
+
+                $pic = preg_replace('/!(\d+)X(\d+)\.jpg$/i', '', $pic);//清除缩略图的!200X200.jpg后缀
+                $attid = M('attachment')->where(array('filepath' => $pic))->getField('id');
+                if($attid){
+                    $attid_arr[] = $attid;
+                }
+            }else if (!empty($pic_first)) {
+                //更新表字段
+                $imgtbSize = explode(',', C('cfg_imgthumb_size'));//配置缩略图第一个参数
+                $imgTSize = explode('X', $imgtbSize[0]);
+                $updata = array('id' => $id, 'litpic' => get_picture($pic_first['filepath'], $imgTSize[0], $imgTSize[1]));
+                if (!in_array(B_PIC, $flags)) {
+                    $updata['flag'] = array('exp','flag+'.B_PIC);
+                }
+                M('neirong')->save($updata);
+            }
+            //attachmentindex入库
+            if (!empty($attid_arr)) {
+                $attid_arr = array_unique($attid_arr);
+                $dataAtt = array();
+                foreach ($attid_arr as $v) {
+                    $dataAtt[] = array('attid' => $v,'arcid' => $id, 'modelid' => $modelid);
+                }
+                M('attachmentindex')->addAll($dataAtt);
+            }
+            //更新静态缓存
+            delCacheHtml('List/index_'.$data['cid'].'_', false, 'list:index');
+            delCacheHtml('List/index_'.$selfCate['ename'], false, 'list:index');//还有只有名称
+            delCacheHtml('Show/index_*_'. $id, false, 'show:index');//不太精确，会删除其他模块同id文档
+            //Delete blog archive
+            getDateList($modelid, 2);
+            $this->success('修改成功', U(GROUP_NAME. '/Article/indexneirong', array('fid' => $fid)));
+        }else {
+            $this->error('修改失败');
+        }
+    }
 
 
 	//移动
@@ -488,6 +1194,24 @@ class ArticleAction extends CommonContentAction {
 			$this->error('删除失败');
 		}
 	}
+    public function delneirong() {
+        $id = I('id',0 , 'intval');
+        $batchFlag = I('get.batchFlag', 0, 'intval');
+        //批量删除
+        if ($batchFlag) {
+            $this->delBatchneirong();
+            return;
+        }
+        $fid = I('fid',0 , 'intval');//单纯的GET没问题
+        if (false !== M('neirong')->where(array('id' => $id))->delete() ){
+
+            delCacheHtml('Show/index_*_'. $id.'.', false, 'show:index');
+            $this->success('删除成功', U(GROUP_NAME. '/Article/indexneirong', array('fid' => $fid)));
+
+        }else {
+            $this->error('删除失败');
+        }
+    }
 
 	//批量删除到回收站
 	public function delBatch() {
@@ -513,7 +1237,6 @@ class ArticleAction extends CommonContentAction {
 			$this->error('批量删除文失败');
 		}
 	}
-
 	//还原文章
 	public function restore() {
 		

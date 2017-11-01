@@ -40,7 +40,7 @@ class SoftAction extends CommonContentAction {
 		$this->keyword = $keyword;
 		$this->page = $page->show();
 		$this->vlist = $art;
-		$this->type = '软件下载列表';
+		$this->type = '设计师添加';
 
 		$this->display();
 	}

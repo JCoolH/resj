@@ -34,7 +34,7 @@
     <div class="operate">
         <div class="left">
             <if condition='ACTION_NAME eq "index"'>
-                <input type="button" onclick="goUrl('{:U(GROUP_NAME. '/Soft/add', array('pid'=>$pid))}')" class="btn_blue" value="添加软件下载">
+                <input type="button" onclick="goUrl('{:U(GROUP_NAME. '/Soft/add', array('pid'=>$pid))}')" class="btn_blue" value="设计师添加">
                 <input type="button" onclick="toGetSubmit('{:U(GROUP_NAME.'/Soft/move', array('pid' => $pid))}', {:C('URL_MODEL')}, '{:C('URL_PATHINFO_DEPR')}')" class="btn_blue" value="移动">
                 <input type="button" onclick="doConfirmBatch('{:U(GROUP_NAME.'/Soft/del', array('batchFlag' => 1,'pid' => $pid))}', '确实要删除选择项吗？')" class="btn_blue" value="删除">
                 <input type="button" onclick="goUrl('{:U(GROUP_NAME.'/Soft/trach', array('pid' => $pid))}')" class="btn_green" value="回收站">

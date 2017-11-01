@@ -34,6 +34,9 @@
     <div class="operate">
         <div class="left">
             <if condition='ACTION_NAME eq "index"'>
+                <if condition="$pid eq 2 or $pid eq 15">
+                    <input type="button" onclick="goUrl('{:U(GROUP_NAME. '/Article/addanli', array('pid'=>$pid))}')" class="btn_blue" value="添加图片案例">
+                </if>
                 <input type="button" onclick="goUrl('{:U(GROUP_NAME. '/Article/add', array('pid'=>$pid))}')" class="btn_blue" value="添加文章">
                 <input type="button" onclick="toGetSubmit('{:U(GROUP_NAME.'/Article/move', array('pid' => $pid))}', {:C('URL_MODEL')}, '{:C('URL_PATHINFO_DEPR')}')" class="btn_blue" value="移动">
                 <input type="button" onclick="doConfirmBatch('{:U(GROUP_NAME.'/Article/del', array('batchFlag' => 1,'pid' => $pid))}', '确实要删除选择项吗？')" class="btn_blue" value="删除">
@@ -79,13 +82,14 @@
                 <td>{$v.publishtime|date='Y-m-d H:i:s', ###}</td>
                 <td>
                 <if condition='ACTION_NAME eq "index"'>
-                <if condition="($v.flag & B_JUMP) && !empty($v['jumpurl']) ">
-                <a href="{$v.jumpurl|goLinkEncode}" target="_blank">查看</a>
-                <else/>
-                <a href="{:U(C('DEFAULT_GROUP'). '/Show/article',array('id' => $v['id']), '').'#'.rand(1000,time())}" target="_blank">查看</a>
-                </if>
-                <a href="{:U(GROUP_NAME. '/Article/edit',array('id' => $v['id'],'pid' => $pid), '')}">编辑</a>
-                <a href="javascript:;" onclick="toConfirm('{:U(GROUP_NAME. '/Article/del',array('id' => $v['id'], 'pid' => $pid), '')}', '确实要删除吗？')">删除</a>
+                    <if condition="$pid eq 2 or $pid eq 15">
+                        <!--<a href="{:U(GROUP_NAME. '/Article/indexhc', array('fid'=>$v['id']))}">会场列表</a>-->
+                        <a href="{:U(GROUP_NAME. '/Article/indexneirong', array('fid'=>$v['id']))}">内容列表</a>
+                        <a href="{:U(GROUP_NAME. '/Article/editanli',array('id' => $v['id'],'pid' => $pid), '')}">编辑</a>
+                        <a href="javascript:;" onclick="toConfirm('{:U(GROUP_NAME. '/Article/del',array('id' => $v['id'], 'pid' => $pid), '')}', '确实要删除吗？')">删除</a>
+                    </if>
+                <!--<a href="{:U(GROUP_NAME. '/Article/edit',array('id' => $v['id'],'pid' => $pid), '')}">编辑</a>-->
+                <!--<a href="javascript:;" onclick="toConfirm('{:U(GROUP_NAME. '/Article/del',array('id' => $v['id'], 'pid' => $pid), '')}', '确实要删除吗？')">删除</a>-->
                 <else/>
                 <a href="{:U(GROUP_NAME. '/Article/restore',array('id' => $v['id'], 'pid' => $pid), '')}">还原</a>
                 <a href="javascript:;" onclick="toConfirm('{:U(GROUP_NAME. '/Article/clear',array('id' => $v['id'], 'pid' => $pid), '')}', '确实要彻底删除吗？')">彻底删除</a>

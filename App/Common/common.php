@@ -10,7 +10,11 @@ function msg($sta,$str,$data){
     return json_encode($arr);
 }
 
-
+//获得设计师
+function list_sjs(){
+    $temp = M('soft')->field('id,title')->select();
+    return $temp;
+}
 
 //magic_quotes_gpc如果开启,去掉转义，不然加上TP入库时的转义，会出现两次反斜线转义
 if (get_magic_quotes_gpc()) {
@@ -267,7 +271,10 @@ function getArrayOfItem($group = 'animal', $update  = 0) {//S方法的缓存名�
     }
     return $itme_arr;   
 }
-
+function getArrayOfItems($group){
+    $temp = M('iteminfo')->field('id,name')->where(array('group' => $group))->order('sort,id')->select();
+    return $temp;
+}
 //block 
 //$name
 function getBlock($name , $update  = 0) {
